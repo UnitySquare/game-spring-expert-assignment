@@ -1,0 +1,16 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: game-db-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
+      MYSQL_DATABASE: game-db
+    ports:
+      - "3306:3306"
+
+  redis:
+    image: redis:7
+    container_name: game-db-redis
+    ports:
+      - "6410:6379"
+    command: ["redis-server", "--requirepass", "${ROOT_PASSWORD:?ROOT_PASSWORD variable is not set}"]
