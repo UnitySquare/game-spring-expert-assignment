@@ -24,7 +24,7 @@ public class WorldChatController {
     public ResponseEntity<List<ChatMessageResponse>> chats(
             @PathVariable Long worldId,
             @RequestParam(defaultValue = "50") int limit) {
-        List<ChatMessageResponse> messages = RecentChatQueryService.getRecentMessages(worldId, limit);
+        List<ChatMessageResponse> messages = chatService.getRecentMessages(worldId, limit);
         return ResponseEntity.ok(messages);
     }
 }
